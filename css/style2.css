@@ -1,0 +1,205 @@
+body{
+	margin:0;padding:0;
+	font-family:Arial;
+	resize: both;
+}
+.boton{
+	position:fixed;	
+	background-image:url("tabla.jpg");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	border-radius: 8%;
+	box-shadow:2px 2px 66px -12px black;
+	z-index:99999;
+}
+.inicio {
+	background-color: white;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	width: 0%;
+	padding: 12px;
+	border-radius: 5px;
+	text-align: center;
+	position: fixed;
+	left: 50%;
+	top: 53%;
+	margin-left: 0px;
+	margin-top: 0px;
+	overflow: hidden;
+	opacity: 0;
+	z-index: 99999;
+	-webkit-transform: scale(.9);
+	-ms-transform: scale(.9);
+	transform: scale(.9);
+}
+.bm.iniciar {
+	cursor:pointer;
+	min-height:1em;
+	outline: none;
+	border: none;
+	background: #3600D9 none;
+	color: white;
+	margin-top: 5px;
+	padding: 5px 0;
+	font-weight: bold;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+	box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease, background 0.1s ease;
+	transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+	will-change: '';
+	-webkit-tap-highlight-color: transparent;
+	font-size: 1.5em;
+}
+.bgtrans{
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: block;
+	opacity: 0;
+	z-index: 10000;
+}
+.contenedor{	
+}
+.no-metales{
+}
+.metales{
+}
+.no-metales.metaloides{
+	background-color:#00B359;	
+}
+.no-metales.otros-no-metales{
+	background-color:#00D900;	
+}
+.no-metales.halogenos{
+	background-color:#00FFBF;	
+}
+.no-metales.gase-nobles{
+	background-color:#4CA6FF;	
+}
+.metales.alcalinos{
+	background-color:#FFD24C;
+}
+.metales.alcalinoterreos{
+	background-color:#FFFF73;
+}
+.metales.lantanidos{
+	background-color:#CF8B47;	
+}
+.metales.actinidos{
+	background-color:#FF99CC;
+}
+.metales.metales-de-transicion{
+	background-color:#CA8462;
+}
+.metales.metales-de-bloque{
+	background-color:#00D9A3;
+}
+.tablaP{
+	display:flex;	
+}
+.tablaP .row{
+	width:7%;
+}
+.cell-elemt{
+	position: relative;
+	height: 69px;
+	background-color:#00B3B3;
+	border: 1px solid transparent;
+    box-sizing: border-box;
+	background-image:url("fondo1.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:100% 100%;
+}
+.cell-elemt span{
+	position:absolute;
+	font-size:11px;
+	margin-left: 20%;
+    margin-top: 21%;
+}
+.cell-elemt p{
+	position:relative;
+	font-size:16px;
+	margin-top: 0px;
+    text-align: center;
+	color:#5D5D5D;
+	/*font-weight:800;*/
+}
+.cell-elemt[no-atomico='']{
+	visibility: collapse;
+}
+@media all and (orientation: portrait){
+	body{	
+		-ms-transform: rotate(90deg); /* IE 9 */
+		-webkit-transform: rotate(90deg); /* Safari */
+		transform: rotate(90deg);		
+	}
+	.contenedor{	
+		width: 133%;
+	}
+	.boton{
+		width: 16%!important;
+		height: 11%!important;
+		top: 3%!important;
+		right: 39%!important;
+	}
+}
+@media (orientation:portrait) and (max-width:400px){
+	.contenedor{	
+		width: 166%;
+	}
+}
+@media all and (orientation: landscape) {
+	.boton{
+		width: 13%;
+		height: 10%;
+		top: 0%;
+		right: 50%;
+		margin: 1%;
+	}
+	.tablaP{
+		width:100%;  
+	}
+} 
+@media (orientation: portrait) and ( min-width:500px) {
+	.cell-elemt p{
+		font-size:26px;	
+		margin-top: 19px;
+	}
+	.cell-elemt span{
+		font-size:12px;	
+		margin-top: 18%;
+	}
+} 
+@media (orientation: landscape) and ( min-width:500px){
+	.cell-elemt p{
+		font-size:14px;	
+		margin-top: 0px;
+	}
+	.cell-elemt span{
+		font-size:10px;	
+		margin-top: 14%;
+	}
+} 
+@media (orientation: landscape) and ( min-width:800px){
+	.cell-elemt p{
+		font-size:19px;		
+	}		
+} 
+@media (orientation: landscape) and ( min-width:1000px){
+	.cell-elemt p{
+		font-size:25px;
+		margin-top: 20px;
+	}
+	.cell-elemt span{
+	    font-size: 17px;
+		margin-top: 13%;
+	}
+} 
