@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" href="css/style2.css" />
+	<link rel="stylesheet" href="css/modern-style.css" />
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+	<script src="js/sweetalert.min.js"></script>
+	<script src="js/periodicTable.js"></script>
+	<title>Tabla Periódica Completa</title>
+</head>
+<body>
+	<div class="contenedor">
+		<a href="index.html">
+			<div class="boton" title="Volver a vista por familias"></div>
+		</a>
+
+		<!-- Contenedor para la tabla completa -->
+		<div id="tabla-completa-container"></div>
+	</div>
+
+	<script>
+		// Script para inicializar la tabla completa
+		(async function() {
+			try {
+				const tablaCompleta = new PeriodicTable({
+					container: '#tabla-completa-container',
+					mode: 'complete',
+					onElementClick: function(elemento) {
+						const noMetales = ['Otros no metales', 'Halógenos', 'Gases nobles', 'Metaloides'];
+						const esMetal = !noMetales.includes(elemento.categoria);
+						const tipoElemento = esMetal ? 'Metal' : 'No metal';
+
+						const elementCell = document.querySelector(`[data-atomic="${elemento.noAtomico}"]`);
+						const bgColor = elementCell ? window.getComputedStyle(elementCell).backgroundColor : '#fff';
+
+						if (typeof swal !== 'undefined') {
+							swal.close();
+
+							swal({
+								title: elemento.nombre,
+								text: `
+									<h1 style="font-size: 3rem; margin: 15px 0; font-weight: bold; color: #333;">
+										${elemento.simbolo}
+									</h1>
+									<div style="text-align: left; margin: 20px auto; max-width: 400px;">
+										<div style="margin: 10px 0; padding: 8px; background: rgba(0,0,0,0.05); border-radius: 5px;">
+											<span style="color: #666;">Número atómico:</span>
+											<strong style="float: right; color: #2c3e50;">${elemento.noAtomico}</strong>
+										</div>
+										<div style="margin: 10px 0; padding: 8px; background: rgba(0,0,0,0.05); border-radius: 5px;">
+											<span style="color: #666;">Masa Atómica:</span>
+											<strong style="float: right; color: #2c3e50;">${elemento.masa}</strong>
+										</div>
+										<div style="margin: 10px 0; padding: 8px; background: rgba(0,0,0,0.05); border-radius: 5px;">
+											<span style="color: #666;">${tipoElemento}:</span>
+											<strong style="float: right; color: #2c3e50;">${elemento.categoria}</strong>
+										</div>
+										<div style="margin: 10px 0; padding: 8px; background: rgba(0,0,0,0.05); border-radius: 5px;">
+											<span style="color: #666;">Grupo:</span>
+											<strong style="float: right; color: #2c3e50;">${elemento.grupo}</strong>
+										</div>
+										<div style="margin: 10px 0; padding: 8px; background: rgba(0,0,0,0.05); border-radius: 5px;">
+											<span style="color: #666;">Periodo:</span>
+											<strong style="float: right; color: #2c3e50;">${elemento.periodo}</strong>
+										</div>
+									</div>
+								`,
+								html: true,
+								showConfirmButton: true,
+								confirmButtonText: 'Cerrar',
+								customClass: 'sweet-alert-custom'
+							});
+
+							setTimeout(() => {
+								const sweetAlert = document.querySelector('.sweet-alert');
+								if (sweetAlert && bgColor) {
+									sweetAlert.style.backgroundColor = bgColor;
+									sweetAlert.style.borderColor = bgColor;
+								}
+							}, 100);
+						}
+					}
+				});
+
+				await tablaCompleta.init();
+
+			} catch (error) {
+				console.error('Error inicializando tabla completa:', error);
+			}
+		})();
+	</script>
+</body>
+</html>
